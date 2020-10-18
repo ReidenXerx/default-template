@@ -13,6 +13,59 @@ export function taskBaseObjectPrototype() {
 
   }
 
+
+
+export function taskAkvelon() {
+
+  let test = {
+    a: 0,
+    b: {
+      m: 1,
+      n: 2,
+      k: 4,
+      l: {
+        i: 5,
+        e: 6
+      }
+    },
+    c: 2
+  }
+
+  let test1 = {
+    a: 0,
+    b: 1
+  }
+
+  let objectBuffer = {}
+  let keyPrefix = []
+  recursive(test, keyPrefix)
+  console.log(objectBuffer)
+  console.log(test);
+
+  let iterator = 0
+  function recursive(object, keyPrefix) {
+    for (let key in object) {
+      iterator = iterator + 1
+      console.log(`keyPrefix ${keyPrefix} iterator ${iterator}`)
+      if (object.hasOwnProperty(key)) {
+        if(typeof(object[key]) == 'object') {
+          console.log(`${keyPrefix} ${key}`)
+          keyPrefix.push(key)
+          recursive(object[key], keyPrefix)
+        }
+        else {
+          objectBuffer[`${keyPrefix.join('.')}.${key}`] = object[key]
+          // console.log(objectBuffer)
+          // console.log(keyPrefix)
+
+        }
+      }
+    }
+  }
+}
+
+
+
 export function taskStringConcat() {
     function stringHandler(separator, strings) {
       let result = ''
@@ -103,10 +156,29 @@ export function taskLetter() {
   if(words[0] == words[1]) {
     console.log('yes')
   }
+  for (var variable in object) {
+    if (object.hasOwnProperty(variable)) {
+
+    }
+  }
 }
 
 export function taskArrayFilter() {
   let array = [true, false, false, false, true, true]
   let newarray = array.filter((element) => element == true)
   console.log(newarray.length)
+}
+
+export function taskHtmlDom() {
+  console.log('2323')
+  const blues = document.querySelectorAll('.blue')
+  blues.forEach((blue, i) => {
+    blue.style.backgroundColor = 'blue'
+    blue.nextSibling.backgroundColor = 'red'
+    blue.addEventListener('click', () => {
+      console.log(i)
+    })
+  })
+  document.addEventListener('DomContentLoaded', () => {
+  })
 }

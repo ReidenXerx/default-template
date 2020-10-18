@@ -3,3 +3,5 @@ import * as functions from './functions.js'
 // functions.taskRecursiveSumTree()
 // functions.taskLetter()
 functions.taskArrayFilter()
+// functions.taskHtmlDom()
+functions.taskAkvelon()
